@@ -1,19 +1,21 @@
 import java.util.*;
 
-class Solution { // 짝지어 제거하기
+//프로그래머스 짝지어제거하기
+class Solution {
 	public int solution(String s) {
-		Stack<Character> stack = new Stack<>();
-
+		Stack<Character> st = new Stack<Character>();
 		for (int i = 0; i < s.length(); i++) {
-			if (!stack.isEmpty() && stack.peek() == s.charAt(i)) // 스택이 비어있지 않고 맨 위가 같다면
-				stack.pop(); // 빼기
-			else
-				stack.push(s.charAt(i));
+			if (st.isEmpty()) {
+				st.add(s.charAt(i));
+				continue;
+			}
+			if (st.peek() == s.charAt(i)) {
+				st.pop();
+				continue;
+			}
+			st.add(s.charAt(i));
+
 		}
-
-		if (stack.isEmpty()) // 올클이면 1
-			return 1;
-
-		return 0;
+		return st.isEmpty() ? 1 : 0;
 	}
 }
