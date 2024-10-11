@@ -1,13 +1,11 @@
 class Solution {
-	public int solution(int n) {
-		int[] answer = new int[n + 1]; // 배열 초기화
-		answer[0] = 0;
-		answer[1] = 1;
-
-		for (int i = 2; i <= n; i++) {
-			answer[i] = (answer[i - 1] + answer[i - 2]) % 1234567;
-		}
-
-		return answer[n] % 1234567;
-	}
+    public int solution(int n) {
+        int[] fibo = new int[n + 1];
+        fibo[0] = 0;
+        fibo[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            fibo[i] = (fibo[i - 1] + fibo[i - 2]) % 1234567;
+        }
+        return fibo[n];
+    }
 }
