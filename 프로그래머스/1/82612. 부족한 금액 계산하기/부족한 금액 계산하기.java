@@ -6,9 +6,7 @@ class Solution {
             money -= price;
             price += tmp;
         }
-        if (money <= 0) {
-            return (long) money * -1;
-        }
-        return 0;
+
+        return money >= 0 ? 0 : money * -1;
     }
 }
