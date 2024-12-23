@@ -14,7 +14,7 @@ class Solution {
         bill = charr(bill);
 
         while (true) {
-            // 지갑 길이와 일치하거나 작아지면 종료
+            // 지갑 길이와 일치하거나 작아지면 종료, 0이 입력될 수도 있음
             if (wallet[0] >= bill[0] && wallet[1] >= bill[1])
                 break;
             // 90도 돌려서 한번 더 확인 종료
