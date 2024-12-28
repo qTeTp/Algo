@@ -17,6 +17,8 @@ class Solution {
                 map.put(words[i], words[i]);
             } else {
                 return new int[] { p, turn };
+                // p, turn 변수를 쓰기 싫다면
+                // return new int[] { (i % n) + 1, (i / n) + 1 };
             }
             // 전 단어의 마지막 글자랑 현 단어의 처음 글자랑 다를 때
             if (i != 0 && words[i].charAt(0) != words[i - 1].charAt(words[i - 1].length() - 1)) {
