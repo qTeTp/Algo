@@ -4,47 +4,24 @@
 // 노랑 = (가로 -2) * (세로 - 2)
 // 갈색 = 2 * 가로 + 2 * 세로 - 4
 // 총넓이 = 노랑 가로 + 2 * 노랑 세로 + 2
+// 약수 구하는 메소드 제거
 import java.util.*;
 
 class Solution {
     public int[] solution(int brown, int yellow) {
-        // 노랑 넓이의 약수
-        int[] yak = yak(yellow);
+        // i -> 가로, yellow / i 때문에 가로가 항상 더 김
+        for (int i = 1; i <= yellow; i++) {
+            // i -> 노랑의 약수
+            if (yellow % i == 0) {
+                int garo = yellow / i;
+                int sero = yellow / garo;
 
-        // 최소 넓이
-        if (yak.length == 1)
-            return new int[] { 3, 3 };
-
-        // 노랑이 제곱수라면
-        if (Math.sqrt(yellow) % 1 == 0) {
-            return new int[] { (int) Math.sqrt(yellow) + 2, (int) Math.sqrt(yellow) + 2 };
-        }
-
-        // i -> 가로, j -> 세로. 가로가 세로보다 커야하니까 역순
-        for (int i = yak.length - 1; i >= 1; i--) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (yak[i] * yak[j] == yellow && yellow + brown == (yak[i] + 2) * (yak[j] + 2)) {
-                    return new int[] { yak[i] + 2, yak[j] + 2 };
+                if (garo * sero == yellow && yellow + brown == (garo + 2) * (sero + 2)) {
+                    return new int[] { garo + 2, sero + 2 };
                 }
             }
         }
 
         return null;
-    }
-
-    // 약수 구하는 메소드
-    public int[] yak(int n) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                list.add(i);
-            }
-        }
-
-        int[] arr = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            arr[i] = list.get(i);
-        }
-        return arr;
     }
 }
