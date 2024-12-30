@@ -10,9 +10,9 @@ class Solution {
     public String solution(int a, int b) {
         String[] day = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
         int[] arr = { 1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6 };
-        // 2월 이후로 1일씩 더 늘어남
+        // 2월 이후로 1일씩 더 늘어나니까 1 더해줌
         int tmp = a > 2 ? (arr[a - 1] + b + 4) % 7 : (arr[a - 1] + b + 3) % 7;
 
-        return day[tmp % 7];
+        return day[tmp];
     }
 }
