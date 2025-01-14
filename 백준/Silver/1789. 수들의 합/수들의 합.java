@@ -10,10 +10,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         long num = Long.parseLong(br.readLine());
 
+        // 합계. for문은 무한대로 반복해야함. num까지 하니까 틀림.
         long tmp = 0;
         for (long i = 0;; i++) {
             tmp += i;
-
+            if (tmp == num) {
+                System.out.println(i);
+                break;
+            }
             if (tmp > num) {
                 System.out.println(i - 1);
                 break;
