@@ -18,7 +18,8 @@ public class Main {
             arr[i] = Integer.parseInt(br.readLine());
             sum += arr[i];
         }
-
+        // 두 난쟁이의 키의 합이 9 난쟁이의 키의 합 - 100이 될 때 찾기
+        // 두번 돌기 금지. 두번 돌면 100이 존나 많아짐.
         boolean b = false;
         for (int i = 0; i < 9; i++) {
             if (b == false) {
