@@ -6,13 +6,11 @@ import java.util.*;
 
 class Solution {
     // 전역변수 StringBuilder를 이용해 문자열 변경
-    static StringBuilder sb = new StringBuilder();
+    static StringBuilder sb;
 
     public String solution(String new_id) {
         // 1. id의 대문자를 모두 소문자로 치환
-        for (int i = 0; i < new_id.length(); i++) {
-            sb.append(Character.toLowerCase(new_id.charAt(i)));
-        }
+        sb = new StringBuilder(new_id.toLowerCase());
 
         f2();
         f3();
