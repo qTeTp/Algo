@@ -10,6 +10,7 @@ import java.util.HashSet;
 // m개의 검사해야 할 문자열 입력
 // m개의 문자열 중 s의 문자열과 몇개가 일치하는지 반환
 // 일치하는 문자열의 검색 활용도를 높이기 위해 map이나 set 사용
+// map은 시간 초과 나옴 set 사용
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,11 +25,11 @@ public class Main {
 
         // n개의 비교 문자열
         for (int i = 0; i < n; i++) {
-            String tmp = br.readLine();
-            set.add(tmp);
+            set.add(br.readLine());
         }
 
         // m개의 비교해야할 문자열
+        // 일치값이 존재하면 answer++
         for (int i = 0; i < m; i++) {
             if (set.contains(br.readLine())) {
                 answer++;
