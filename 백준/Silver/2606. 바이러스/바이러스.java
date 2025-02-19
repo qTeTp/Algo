@@ -32,9 +32,22 @@ public class Main {
         }
 
         int[] visited = new int[n + 1];
-        bfs(map, visited);
-        
+        dfs(map, visited, 1);
+        // bfs(map, visited);
         System.out.println(answer);
+    }
+
+    // dfs - 재귀
+    public static void dfs(int[][] map, int[] visited, int node) {
+        // 방문처리
+        visited[node] = 1;
+
+        for (int i = 0; i < map.length; i++) {
+            if (map[node][i] == 1 && visited[i] == 0) {
+                answer++;
+                dfs(map, visited, i);
+            }
+        }
     }
 
     // bfs - 큐 사용
