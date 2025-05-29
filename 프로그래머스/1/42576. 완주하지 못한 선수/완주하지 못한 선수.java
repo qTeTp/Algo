@@ -5,17 +5,27 @@ import java.util.*;
 // 매개변수 : 참여한 선수 배열, 완주한 선수 배열
 class Solution {
 	public String solution(String[] participant, String[] completion) {
-		// 배열 두개 오른차순 정렬
-		Arrays.sort(participant);
-		Arrays.sort(completion);
+		HashMap<String, Integer> hashMap = new HashMap<>();
 
-		for (int i = 0; i < completion.length; i++) {
-			// 둘이 다르다면 반환
-			if (!participant[i].equals(completion[i])) {
-				return participant[i];
+		// 해시맵에 배열을 넣어줌
+		for (String str : participant) {
+			// getOrDefault : 키가 등록이 안되어있다면 뒤의 숫자, 되어있다면 뒤의 서술이 들어감
+			// ex) 아래의 경우 (a, 0) -> (a, 1) a 두번 등록 시 이렇게 됨
+			hashMap.put(str, hashMap.getOrDefault(str, 0) + 1);
+		}
+
+		for (String str : completion) {
+			hashMap.put(str, hashMap.get(str) - 1);
+		}
+
+		// keyset : map에서 밸류값 전체 꺼내보기
+		for (String str : hashMap.keySet()) {
+			// 밸류값이 0이 아니라면 그 키 반환
+			if (hashMap.get(str) != 0) {
+				return str;
 			}
 		}
 
-		return participant[participant.length - 1];
+		return "";
 	}
 }
