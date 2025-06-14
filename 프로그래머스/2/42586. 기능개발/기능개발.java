@@ -13,13 +13,13 @@ class Solution {
         ArrayList<Integer> lst = new ArrayList<>();
         Queue<Integer> queue = new LinkedList<>();
 
-        // 반복문 돌리며 계속 진행률 올림
+        // 완성 날짜 찾아서 큐에 집어넣음
         for (int i = 0; i < progresses.length; i++) {
-            // 나머지가 0이면 당일 배포 가능
+            // 나머지가 0이면 나눈 날에 배포 가능
             if ((100 - progresses[i]) % speeds[i] == 0) {
                 queue.offer((100 - progresses[i]) / speeds[i]);
             }
-            // 아니면 다른날에 해야함
+            // 아니라면 하루 더 걸림
             else {
                 queue.offer((100 - progresses[i]) / speeds[i] + 1);
             }
@@ -27,12 +27,15 @@ class Solution {
 
         int day = queue.poll();
         int cnt = 1;
-
+        // 배포 내보내기
         while (!queue.isEmpty()) {
+            // 날짜가 같거나 작다면 같은 날 배포
             if (day >= queue.peek()) {
                 cnt++;
                 queue.poll();
-            } else {
+            }
+            // 날짜가 더 크다면 다른 날
+            else {
                 lst.add(cnt);
                 cnt = 1;
                 day = queue.poll();
