@@ -28,10 +28,14 @@ public class Main {
             }
         }
 
-        int ye = (starLocation % 2 == 0) ? 1 : 3;
-
         for (int i = 0; i <= 9; i++) {
-            if ((sum + i * ye) % 10 == 0) {
+            int tmp = sum;
+            if (starLocation % 2 == 0) {
+                tmp += i;
+            } else {
+                tmp += (i * 3);
+            }
+            if (tmp % 10 == 0) {
                 System.out.println(i);
                 break;
             }
