@@ -1,0 +1,6 @@
+-- 개와 고양이의 수 카운트
+SELECT ANIMAL_TYPE, 
+    COUNT(ANIMAL_TYPE) as count
+    FROM ANIMAL_INS
+    GROUP BY ANIMAL_TYPE
+    ORDER BY count
