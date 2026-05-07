@@ -1,0 +1,7 @@
+-- 젊은 동물의 id, name 조회
+-- id순 정렬
+SELECT ANIMAL_ID, NAME
+FROM
+ANIMAL_INS
+WHERE INTAKE_CONDITION != 'Aged'
+ORDER BY ANIMAL_ID;
