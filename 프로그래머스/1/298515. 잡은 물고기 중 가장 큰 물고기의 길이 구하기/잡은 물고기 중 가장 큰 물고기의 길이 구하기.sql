@@ -1,0 +1,3 @@
+-- 가장 긴 물고기 길이 반환 + cm
+SELECT CONCAT(MAX(LENGTH), 'cm') AS MAX_LENGTH
+FROM FISH_INFO
