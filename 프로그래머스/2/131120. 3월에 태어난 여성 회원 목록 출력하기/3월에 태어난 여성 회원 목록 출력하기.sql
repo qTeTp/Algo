@@ -1,0 +1,13 @@
+-- MEMBER_PROFILE에서 생일이 3월인 여성 회원 조회
+-- 전화번호가 NULL인 경우는 제외
+-- ID 기준 오름차순
+SELECT
+    MEMBER_ID, 
+    MEMBER_NAME, 
+    GENDER, 
+    DATE_FORMAT(DATE_OF_BIRTH, '%Y-%m-%d') AS DATE_OF_BIRTH
+    FROM MEMBER_PROFILE
+    WHERE TLNO IS NOT NULL
+        AND MONTH(DATE_OF_BIRTH) = 03
+        AND GENDER = 'W'
+    ORDER BY MEMBER_ID ASC;
