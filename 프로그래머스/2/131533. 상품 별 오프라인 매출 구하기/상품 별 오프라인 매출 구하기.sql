@@ -1,0 +1,10 @@
+-- PRODUCT, OFFLINE_SALE 테이블을 조인 후 상품코드 별 매출액(판매가 * 판매량) 출력
+-- 매출액 기준 내림차순, 같다면 상품코드 기준 오름차순
+SELECT 
+    P1.PRODUCT_CODE, 
+    SUM(P1.PRICE * P2.SALES_AMOUNT) AS SALES
+    FROM PRODUCT P1
+    JOIN OFFLINE_SALE P2
+        ON P1.PRODUCT_ID = P2.PRODUCT_ID
+    GROUP BY P1.PRODUCT_CODE
+    ORDER BY SALES DESC, PRODUCT_CODE ASC;
